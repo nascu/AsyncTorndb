@@ -525,7 +525,7 @@ class Connection(object):
                  client_flag=0, cursorclass=Cursor, init_command=None,
                  connect_timeout=None, ssl=None, read_default_group=None,
                  compress=None, named_pipe=None, no_delay=False,
-                 autocommit=False, db=None, io_loop=None):
+                 autocommit=False, db=None):
         """
         Establish a connection to the MySQL database. Accepts several
         arguments:
@@ -644,7 +644,6 @@ class Connection(object):
         self.decoders = conv
         self.sql_mode = sql_mode
         self.init_command = init_command
-        self.io_loop = io_loop or tornado.ioloop.IOLoop.current()
         self.stream = None
 
     @coroutine
@@ -894,7 +893,7 @@ class Connection(object):
         
     @coroutine
     def connect(self):
-        client = TCPClient(io_loop=self.io_loop)
+        client = TCPClient()
         self.stream = yield client.connect(self.host, self.port)
         # sock = None
         # try:
