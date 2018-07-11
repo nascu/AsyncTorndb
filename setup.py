@@ -12,7 +12,7 @@ setup(
     version=version,
     author="Mayflower",
     author_email="fucongwang@gmail.com",
-    url="https://github.com/mayflaver/AsyncTorndb",
+    url="https://github.com/nascu/AsyncTorndb",
     license="MIT",
     packages=find_packages(),
     description="async mysql client for tornado.",
